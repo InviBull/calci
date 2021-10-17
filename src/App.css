@@ -21,14 +21,24 @@ body{
   padding-right: 10px;
 }
 
-.calculator .display .outputData{
+.calculator .display input[type=text]{
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 40px;
+
+  background: #1b1b1b;
+  color: white;
+
+  border: none;
+  outline: none;
+
+  width: 350px;
+
+  text-align: right;
 }
 
 #backValue{
-  font-size: 20px !important;
+  font-size: 20px;
   color: gray;
 }
 
