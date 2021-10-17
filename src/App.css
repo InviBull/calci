@@ -1,38 +1,76 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+
+*{
+  color: #e5e5e5;
+}
+body{
+  background-color: #252525;
+}
+
+.calculator .display{
+  text-align: left;
+}
+
+.calculator .display .outputData{
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+#backValue{
+  font-size: 20px !important;
+  color: gray;
+}
+
+.calculator .keypad .column button{
+  margin: 1px;
+  
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+
   text-align: center;
+  
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+
+  background-color: #1b1b1b;
+
+  border: none;
+  outline: none;
+
+  transition: all 0.1s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.calculator .keypad .column button:hover{
+  background-color: #0f0f0f;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.numbers, #decimal{
+  background-color: #080808 !important;
+  font-size: 20px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.numbers:hover, #decimal:hover{
+  background-color: #020202 !important;
 }
 
-.App-link {
-  color: #61dafb;
+#equal-sign{
+  background-color: #585656 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#equal-sign:hover{
+  background-color: #464444 !important;
+}
+
+#zero{
+  padding-left: 59px;
+  padding-right: 59px;
+}
+
+#clear{
+  padding-left: 51px;
+  padding-right: 51px;
 }
