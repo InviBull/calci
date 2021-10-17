@@ -8,7 +8,8 @@ body{
 }
 
 .calculator .display{
-  text-align: left;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .calculator .display .outputData{
@@ -22,7 +23,17 @@ body{
   color: gray;
 }
 
-.calculator .keypad .column button{
+#mainValue{
+  margin-bottom: 20px;
+}
+
+.calculator .keypad{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.calculator .keypad button{
   margin: 1px;
   
   padding-top: 15px;
@@ -32,7 +43,7 @@ body{
 
   text-align: center;
   
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
 
@@ -44,13 +55,12 @@ body{
   transition: all 0.1s;
 }
 
-.calculator .keypad .column button:hover{
+.calculator .keypad button:hover{
   background-color: #0f0f0f;
 }
 
 .numbers, #decimal{
   background-color: #080808 !important;
-  font-size: 20px !important;
 }
 
 .numbers:hover, #decimal:hover{
@@ -65,12 +75,7 @@ body{
   background-color: #464444 !important;
 }
 
-#zero{
-  padding-left: 59px;
-  padding-right: 59px;
-}
-
-#clear{
-  padding-left: 51px;
-  padding-right: 51px;
+#zero, #clear{
+  grid-column-start: 1;
+  grid-column-end: 3;
 }

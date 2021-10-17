@@ -14,7 +14,7 @@ function App() {
   const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
   
   const [mainValue, setMainValue] = useState("0");
-  const [backValue, setBackValue] = useState("");
+  const [backValue, setBackValue] = useState(" ");
 
   const clicked = (buttonClicked) => {
     const value = buttonClicked.target.getAttribute("data-value");
@@ -24,15 +24,12 @@ function App() {
 
     if (value === "clear"){
       currentValue = "0";
-      finalValue = "";  
+      finalValue = " ";  
     }
 
     if (isEvaluated){ 
-      finalValue = "";
-      if (currentValue === "Infinity"){
-        currentValue = ""
-      }
-      if(numbers.includes(value) || value === "."){
+      finalValue = " ";
+      if (currentValue === "Infinity" || numbers.includes(value) || value === "."){
         currentValue = "0"
       }
       isEvaluated = false;
@@ -50,7 +47,7 @@ function App() {
       isEvaluated = true;
     }
 
-    else if(value === "."){
+    else if(value === "." && !(currentValue.includes("."))){
       currentValue = currentValue + value;
     }
     
@@ -74,6 +71,10 @@ function App() {
       }
     }  
 
+    if (currentValue === ""){
+      currentValue = "0";
+    }
+
     setMainValue(currentValue);
     setBackValue(finalValue);
     };
@@ -82,42 +83,31 @@ function App() {
     <div className="calculator">
       <div className="display">
         <Output id="backValue" data={backValue} />
-        <Output id= "mainValue" data={mainValue} />
+        <Output id= "mainValue" data={mainValue}/>
       </div>
       <div className="keypad">
-        
-        <div className = "column">
           <button id = "clear" onClick = {b => clicked(b)} data-value = "clear">C</button>
           <button id = "backspace" onClick = {b => clicked(b)} data-value = "backspace"><FaBackspace /></button>
           <button className = "operators" id = "divide" onClick = {b => clicked(b)} data-value = "/"><FaDivide /></button>
-        </div>
 
-        <div className = "column" >
           <button className = "numbers" id = "7" onClick = {b => clicked(b)} data-value = "7">7</button>
           <button className = "numbers" id = "8" onClick = {b => clicked(b)} data-value = "8">8</button>
           <button className = "numbers" id = "9" onClick = {b => clicked(b)} data-value = "9">9</button>
           <button className = "operators" id = "multiply" onClick = {b => clicked(b)} data-value = "*"><FaTimes /></button>
-        </div>
 
-        <div className = "column" >
-        <button className = "numbers" id = "4" onClick = {b => clicked(b)} data-value = "4">4</button>
-        <button className = "numbers" id = "5" onClick = {b => clicked(b)} data-value = "5">5</button>
-        <button className = "numbers" id = "6" onClick = {b => clicked(b)} data-value = "6">6</button>
-        <button className = "operators" id = "subtract" onClick = {b => clicked(b)} data-value = "-"><FaMinus /></button>
-        </div>
+          <button className = "numbers" id = "4" onClick = {b => clicked(b)} data-value = "4">4</button>
+          <button className = "numbers" id = "5" onClick = {b => clicked(b)} data-value = "5">5</button>
+          <button className = "numbers" id = "6" onClick = {b => clicked(b)} data-value = "6">6</button>
+          <button className = "operators" id = "subtract" onClick = {b => clicked(b)} data-value = "-"><FaMinus /></button>
+          
+          <button className = "numbers" id = "1" onClick = {b => clicked(b)} data-value = "1">1</button>
+          <button className = "numbers" id = "2" onClick = {b => clicked(b)} data-value = "2">2</button>
+          <button className = "numbers" id = "3" onClick = {b => clicked(b)} data-value = "3">3</button>
+          <button className = "operators" id = "add" onClick = {b => clicked(b)} data-value = "+"><FaPlus /></button>
 
-        <div className = "column" >
-        <button className = "numbers" id = "1" onClick = {b => clicked(b)} data-value = "1">1</button>
-        <button className = "numbers" id = "2" onClick = {b => clicked(b)} data-value = "2">2</button>
-        <button className = "numbers" id = "3" onClick = {b => clicked(b)} data-value = "3">3</button>
-        <button className = "operators" id = "add" onClick = {b => clicked(b)} data-value = "+"><FaPlus /></button>
-        </div>
-
-        <div className = "column" >
-        <button className = "numbers" id = "zero" onClick = {b => clicked(b)} data-value = "0">0</button>
-        <button id = "decimal" onClick = {b => clicked(b)} data-value = ".">.</button>
-        <button className = "operators" id = "equal-sign" onClick = {b => clicked(b)} data-value = "equal"><FaEquals /></button>
-        </div>
+          <button className = "numbers" id = "zero" onClick = {b => clicked(b)} data-value = "0">0</button>
+          <button id = "decimal" onClick = {b => clicked(b)} data-value = ".">.</button>
+          <button className = "operators" id = "equal-sign" onClick = {b => clicked(b)} data-value = "equal"><FaEquals /></button>
       </div>
     </div>
   );
