@@ -7,9 +7,18 @@ body{
   background-color: #252525;
 }
 
+.calculator{
+  margin: 100px auto;
+  width: 400px;
+  border: 2px solid #464444;
+  padding: 10px;
+}
+
 .calculator .display{
   text-align: right;
-  margin-right: 10px;
+  background-color: #1b1b1b;
+  padding-top: 5px;
+  padding-right: 10px;
 }
 
 .calculator .display .outputData{
@@ -29,8 +38,12 @@ body{
 
 .calculator .keypad{
     display: grid;
+
     grid-template-columns: auto auto auto;
     grid-template-columns: repeat(4, 1fr);
+
+    align-items: center;
+    text-align: center;
 }
 
 .calculator .keypad button{
@@ -42,6 +55,9 @@ body{
   padding-right: 25px;
 
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 100px;
   
   font-size: 30px;
   font-weight: 500;
@@ -78,4 +94,5 @@ body{
 #zero, #clear{
   grid-column-start: 1;
   grid-column-end: 3;
+  max-width: 200px;
 }

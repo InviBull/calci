@@ -14,7 +14,7 @@ function App() {
   const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
   
   const [mainValue, setMainValue] = useState("0");
-  const [backValue, setBackValue] = useState(" ");
+  const [backValue, setBackValue] = useState("0");
 
   const clicked = (buttonClicked) => {
     const value = buttonClicked.target.getAttribute("data-value");
@@ -24,11 +24,11 @@ function App() {
 
     if (value === "clear"){
       currentValue = "0";
-      finalValue = " ";  
+      finalValue = "0";  
     }
 
     if (isEvaluated){ 
-      finalValue = " ";
+      finalValue = "0";
       if (currentValue === "Infinity" || numbers.includes(value) || value === "."){
         currentValue = "0"
       }
@@ -36,15 +36,25 @@ function App() {
     }
 
     if(value === "equal"){
-      let result = 0;
-      
-      finalValue = `${finalValue}${currentValue} = `;
-      currentValue = "0";
-      
-      result = evaluate(finalValue.replace("=", ""));
-      
-      currentValue = result.toString();
-      isEvaluated = true;
+      try{
+        let result = 0;
+        
+        if (!(finalValue === "0")){
+          finalValue = `${finalValue}${currentValue} = `;
+          currentValue = "0";
+          
+          result = evaluate(finalValue.replace("=", ""));
+          
+          currentValue = result.toString();
+          isEvaluated = true;
+        }
+      }
+      catch(error){
+        console.log(error);
+        alert("Couldn't Calculate!");
+        finalValue = "0";
+        currentValue = "0";
+      }
     }
 
     else if(value === "." && !(currentValue.includes("."))){
@@ -56,7 +66,11 @@ function App() {
     }
     
     else if(operators.includes(value)){
-      finalValue = `${finalValue}${currentValue} ${value} `;
+      if(finalValue === "0"){
+        finalValue = `${currentValue} ${value} `;
+      }else{
+        finalValue = `${finalValue}${currentValue} ${value} `;
+      }
       currentValue = "0";
     }
 
@@ -74,7 +88,6 @@ function App() {
     if (currentValue === ""){
       currentValue = "0";
     }
-
     setMainValue(currentValue);
     setBackValue(finalValue);
     };
